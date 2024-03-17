@@ -14,7 +14,7 @@ package-lock.json
 # If you have any secrets or sensitive information, add them here
 # Example: 
 .env
-
+!node_modules/
 # If you have any IDE or editor specific files, add them here
 # Example: .vscode/
 
