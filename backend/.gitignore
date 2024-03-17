@@ -12,7 +12,8 @@ package-lock.json
 *.db
 
 # If you have any secrets or sensitive information, add them here
-# Example: .env
+# Example: 
+.env
 
 # If you have any IDE or editor specific files, add them here
 # Example: .vscode/
