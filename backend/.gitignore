@@ -1,0 +1,27 @@
+# Ignore Node.js modules
+node_modules/
+
+# Ignore npm lock file
+package-lock.json
+
+# Ignore any build artifacts or compiled files
+# You may need to adjust this depending on your specific setup
+*.log
+*.pid
+*.seed
+*.db
+
+# If you have any secrets or sensitive information, add them here
+# Example: .env
+
+# If you have any IDE or editor specific files, add them here
+# Example: .vscode/
+
+# Ignore any generated or temporary files
+# Example: *.tmp
+
+# Ignore any dependencies or configuration specific to your local environment
+# Example: .env.local
+
+# Ignore any files or directories specific to your deployment process
+# Example: .deploy/
