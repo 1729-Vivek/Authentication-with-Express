@@ -107,3 +107,4 @@ const signin=async (req,res)=>{
 module.exports={
     signup,signin
 }
+//will add more function to authcontroller.js
