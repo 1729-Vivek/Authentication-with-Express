@@ -108,3 +108,4 @@ module.exports={
     signup,signin
 }
 //will add more function to authcontroller.js
+//i will complete this module today
