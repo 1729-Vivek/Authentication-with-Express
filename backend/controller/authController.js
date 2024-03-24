@@ -1,5 +1,6 @@
 const UserModel=require('../model/userSchema.js')
 const emailValidator=require("email-validator")
+const bcrypt=require('bcrypt')
 const signup=async(req,res,next)=>{
     const {name,email,password,confirmPassword}=req.body;
     console.log(name,email,password,confirmPassword);
@@ -78,7 +79,7 @@ const signin=async (req,res)=>{
         })
         .select('+password');
     
-        if(!user||user.password!==password)
+        if(!user||!(await bcrypt.compare(password,user.password)))
         {
             return res.status(400).json({
                 success:false,
@@ -97,7 +98,8 @@ const signin=async (req,res)=>{
             success:true,
             data:user
         })
-    }catch(err){
+    }
+    catch(err){
         
             return res.status(400).json({
                 success:false,
@@ -107,8 +109,46 @@ const signin=async (req,res)=>{
     }
    
 }
+const getUser=async(req,res,next)=>{
+    const userId=req.user.id;
+
+    try{
+        const user=await UserModel.findById(userId);
+        return res.status(200).json({
+            success:true,
+            data:user
+        })
+    }
+    catch(e)
+    {
+        return res.status(400).json({
+            success:false,
+            message:e.message
+        })
+    }
+}
+const  logout=(req,res)=>{
+    try{
+        const cookieOption={
+            expires:new Date(),
+            httpOnly:true,
+        }
+        res.cookie("token",null,cookieOption)
+        res.status(200).json({
+            success:true,
+            message:"Logged Out"
+        })
+    }
+    catch(e)
+    {
+        res.status(400).json({
+            success:true,
+            message:e.message
+        })
+    }
+}
 module.exports={
-    signup,signin
+    signup,signin,getUser,logout
 }
 //will add more function to authcontroller.js
 //i will complete this module today
