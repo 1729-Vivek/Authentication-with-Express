@@ -69,6 +69,9 @@ const signin=async (req,res)=>{
     })
     }
     try{
+
+        //important implementation is here like checking user then generating token for the valid user
+
         const user=await UserModel
         .findOne({
             email
