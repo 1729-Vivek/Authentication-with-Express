@@ -24,8 +24,9 @@ function SignIn() {
       }
       setLoading(false);
     } catch (error) {
-      alert(error.response.data.message);
-      setLoading(false);
+      console.error("Error:", error);
+  alert(error.response?.data?.message || "An error occurred");
+  setLoading(false);
     }
   }
 
