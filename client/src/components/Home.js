@@ -19,7 +19,7 @@ function Home() {
     try {
       setLoading(false);
       const response = await axios({
-        method: "get",
+        method: "post",
         url: URL + "/api/auth/user",
         withCredentials: true
       });
